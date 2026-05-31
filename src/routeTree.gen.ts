@@ -10,14 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnitsRouteImport } from './routes/units'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as CurrencyRouteImport } from './routes/currency'
 import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as BmiRouteImport } from './routes/bmi'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const UnitsRoute = UnitsRouteImport.update({
   id: '/units',
   path: '/units',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CurrencyRoute = CurrencyRouteImport.update({
@@ -35,6 +42,11 @@ const BmiRoute = BmiRouteImport.update({
   path: '/bmi',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,39 +55,69 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
   '/currency': typeof CurrencyRoute
+  '/privacy': typeof PrivacyRoute
   '/units': typeof UnitsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
   '/currency': typeof CurrencyRoute
+  '/privacy': typeof PrivacyRoute
   '/units': typeof UnitsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
   '/currency': typeof CurrencyRoute
+  '/privacy': typeof PrivacyRoute
   '/units': typeof UnitsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/bmi' | '/calculator' | '/currency' | '/units'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/bmi'
+    | '/calculator'
+    | '/currency'
+    | '/privacy'
+    | '/units'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bmi' | '/calculator' | '/currency' | '/units'
-  id: '__root__' | '/' | '/bmi' | '/calculator' | '/currency' | '/units'
+  to:
+    | '/'
+    | '/about'
+    | '/bmi'
+    | '/calculator'
+    | '/currency'
+    | '/privacy'
+    | '/units'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/bmi'
+    | '/calculator'
+    | '/currency'
+    | '/privacy'
+    | '/units'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   BmiRoute: typeof BmiRoute
   CalculatorRoute: typeof CalculatorRoute
   CurrencyRoute: typeof CurrencyRoute
+  PrivacyRoute: typeof PrivacyRoute
   UnitsRoute: typeof UnitsRoute
 }
 
@@ -86,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/units'
       fullPath: '/units'
       preLoaderRoute: typeof UnitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/currency': {
@@ -109,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BmiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -121,9 +177,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   BmiRoute: BmiRoute,
   CalculatorRoute: CalculatorRoute,
   CurrencyRoute: CurrencyRoute,
+  PrivacyRoute: PrivacyRoute,
   UnitsRoute: UnitsRoute,
 }
 export const routeTree = rootRouteImport
