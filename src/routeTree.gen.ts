@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UnitsRouteImport } from './routes/units'
+import { Route as CurrencyRouteImport } from './routes/currency'
+import { Route as CalculatorRouteImport } from './routes/calculator'
+import { Route as BmiRouteImport } from './routes/bmi'
 import { Route as IndexRouteImport } from './routes/index'
 
+const UnitsRoute = UnitsRouteImport.update({
+  id: '/units',
+  path: '/units',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CurrencyRoute = CurrencyRouteImport.update({
+  id: '/currency',
+  path: '/currency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalculatorRoute = CalculatorRouteImport.update({
+  id: '/calculator',
+  path: '/calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BmiRoute = BmiRouteImport.update({
+  id: '/bmi',
+  path: '/bmi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,72 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bmi': typeof BmiRoute
+  '/calculator': typeof CalculatorRoute
+  '/currency': typeof CurrencyRoute
+  '/units': typeof UnitsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bmi': typeof BmiRoute
+  '/calculator': typeof CalculatorRoute
+  '/currency': typeof CurrencyRoute
+  '/units': typeof UnitsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bmi': typeof BmiRoute
+  '/calculator': typeof CalculatorRoute
+  '/currency': typeof CurrencyRoute
+  '/units': typeof UnitsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/bmi' | '/calculator' | '/currency' | '/units'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/bmi' | '/calculator' | '/currency' | '/units'
+  id: '__root__' | '/' | '/bmi' | '/calculator' | '/currency' | '/units'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BmiRoute: typeof BmiRoute
+  CalculatorRoute: typeof CalculatorRoute
+  CurrencyRoute: typeof CurrencyRoute
+  UnitsRoute: typeof UnitsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/units': {
+      id: '/units'
+      path: '/units'
+      fullPath: '/units'
+      preLoaderRoute: typeof UnitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/currency': {
+      id: '/currency'
+      path: '/currency'
+      fullPath: '/currency'
+      preLoaderRoute: typeof CurrencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calculator': {
+      id: '/calculator'
+      path: '/calculator'
+      fullPath: '/calculator'
+      preLoaderRoute: typeof CalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bmi': {
+      id: '/bmi'
+      path: '/bmi'
+      fullPath: '/bmi'
+      preLoaderRoute: typeof BmiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +121,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BmiRoute: BmiRoute,
+  CalculatorRoute: CalculatorRoute,
+  CurrencyRoute: CurrencyRoute,
+  UnitsRoute: UnitsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
