@@ -20,9 +20,24 @@ export function SiteHeader() {
           <Link to="/bmi" className="hover:text-foreground">BMI</Link>
           <Link to="/currency" className="hover:text-foreground">Currency</Link>
           <Link to="/units" className="hover:text-foreground">Units</Link>
+          <Link to="/about" className="hover:text-foreground">About</Link>
         </nav>
       </div>
     </header>
+  );
+}
+
+export function SiteFooter() {
+  return (
+    <footer className="mt-16 border-t bg-background/60">
+      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-6 py-6 text-sm text-muted-foreground sm:flex-row">
+        <p>© {new Date().getFullYear()} Utilikit. All rights reserved.</p>
+        <nav className="flex gap-5">
+          <Link to="/about" className="hover:text-foreground">About</Link>
+          <Link to="/privacy" className="hover:text-foreground">Privacy</Link>
+        </nav>
+      </div>
+    </footer>
   );
 }
 
@@ -46,6 +61,7 @@ export function ToolShell({
         <p className="mt-2 text-muted-foreground">{subtitle}</p>
         <div className="mt-8">{children}</div>
       </main>
+      <SiteFooter />
     </div>
   );
 }

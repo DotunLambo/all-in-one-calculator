@@ -13,7 +13,7 @@ export const Route = createFileRoute("/currency")({
   component: CurrencyPage,
 });
 
-const CURRENCIES = ["USD","EUR","GBP","JPY","CNY","INR","CAD","AUD","CHF","BRL","MXN","ZAR","SGD","HKD","NZD","SEK","NOK","KRW","TRY","AED"];
+const CURRENCIES = ["USD","EUR","GBP","NGN","JPY","CNY","INR","CAD","AUD","CHF","BRL","MXN","ZAR","SGD","HKD","NZD","SEK","NOK","KRW","TRY","AED"];
 
 function CurrencyPage() {
   const [amount, setAmount] = useState(100);
