@@ -61,6 +61,7 @@ export function ToolShell({
         <p className="mt-2 text-muted-foreground">{subtitle}</p>
         <div className="mt-8">{children}</div>
       </main>
+      <SiteFooter />
     </div>
   );
 }
