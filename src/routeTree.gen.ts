@@ -9,22 +9,40 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WeightRouteImport } from './routes/weight'
 import { Route as UnitsRouteImport } from './routes/units'
+import { Route as TemperatureRouteImport } from './routes/temperature'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as LengthRouteImport } from './routes/length'
 import { Route as CurrencyRouteImport } from './routes/currency'
 import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as BmiRouteImport } from './routes/bmi'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WeightRoute = WeightRouteImport.update({
+  id: '/weight',
+  path: '/weight',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UnitsRoute = UnitsRouteImport.update({
   id: '/units',
   path: '/units',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TemperatureRoute = TemperatureRouteImport.update({
+  id: '/temperature',
+  path: '/temperature',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LengthRoute = LengthRouteImport.update({
+  id: '/length',
+  path: '/length',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CurrencyRoute = CurrencyRouteImport.update({
@@ -59,8 +77,11 @@ export interface FileRoutesByFullPath {
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
   '/currency': typeof CurrencyRoute
+  '/length': typeof LengthRoute
   '/privacy': typeof PrivacyRoute
+  '/temperature': typeof TemperatureRoute
   '/units': typeof UnitsRoute
+  '/weight': typeof WeightRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -68,8 +89,11 @@ export interface FileRoutesByTo {
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
   '/currency': typeof CurrencyRoute
+  '/length': typeof LengthRoute
   '/privacy': typeof PrivacyRoute
+  '/temperature': typeof TemperatureRoute
   '/units': typeof UnitsRoute
+  '/weight': typeof WeightRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -78,8 +102,11 @@ export interface FileRoutesById {
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
   '/currency': typeof CurrencyRoute
+  '/length': typeof LengthRoute
   '/privacy': typeof PrivacyRoute
+  '/temperature': typeof TemperatureRoute
   '/units': typeof UnitsRoute
+  '/weight': typeof WeightRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -89,8 +116,11 @@ export interface FileRouteTypes {
     | '/bmi'
     | '/calculator'
     | '/currency'
+    | '/length'
     | '/privacy'
+    | '/temperature'
     | '/units'
+    | '/weight'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -98,8 +128,11 @@ export interface FileRouteTypes {
     | '/bmi'
     | '/calculator'
     | '/currency'
+    | '/length'
     | '/privacy'
+    | '/temperature'
     | '/units'
+    | '/weight'
   id:
     | '__root__'
     | '/'
@@ -107,8 +140,11 @@ export interface FileRouteTypes {
     | '/bmi'
     | '/calculator'
     | '/currency'
+    | '/length'
     | '/privacy'
+    | '/temperature'
     | '/units'
+    | '/weight'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -117,12 +153,22 @@ export interface RootRouteChildren {
   BmiRoute: typeof BmiRoute
   CalculatorRoute: typeof CalculatorRoute
   CurrencyRoute: typeof CurrencyRoute
+  LengthRoute: typeof LengthRoute
   PrivacyRoute: typeof PrivacyRoute
+  TemperatureRoute: typeof TemperatureRoute
   UnitsRoute: typeof UnitsRoute
+  WeightRoute: typeof WeightRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/weight': {
+      id: '/weight'
+      path: '/weight'
+      fullPath: '/weight'
+      preLoaderRoute: typeof WeightRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/units': {
       id: '/units'
       path: '/units'
@@ -130,11 +176,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UnitsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/temperature': {
+      id: '/temperature'
+      path: '/temperature'
+      fullPath: '/temperature'
+      preLoaderRoute: typeof TemperatureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/length': {
+      id: '/length'
+      path: '/length'
+      fullPath: '/length'
+      preLoaderRoute: typeof LengthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/currency': {
@@ -181,8 +241,11 @@ const rootRouteChildren: RootRouteChildren = {
   BmiRoute: BmiRoute,
   CalculatorRoute: CalculatorRoute,
   CurrencyRoute: CurrencyRoute,
+  LengthRoute: LengthRoute,
   PrivacyRoute: PrivacyRoute,
+  TemperatureRoute: TemperatureRoute,
   UnitsRoute: UnitsRoute,
+  WeightRoute: WeightRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
