@@ -14,6 +14,7 @@ import { Route as UnitsRouteImport } from './routes/units'
 import { Route as TemperatureRouteImport } from './routes/temperature'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LengthRouteImport } from './routes/length'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as CurrencyRouteImport } from './routes/currency'
 import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as BmiRouteImport } from './routes/bmi'
@@ -43,6 +44,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const LengthRoute = LengthRouteImport.update({
   id: '/length',
   path: '/length',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CurrencyRoute = CurrencyRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
   '/currency': typeof CurrencyRoute
+  '/faq': typeof FaqRoute
   '/length': typeof LengthRoute
   '/privacy': typeof PrivacyRoute
   '/temperature': typeof TemperatureRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
   '/currency': typeof CurrencyRoute
+  '/faq': typeof FaqRoute
   '/length': typeof LengthRoute
   '/privacy': typeof PrivacyRoute
   '/temperature': typeof TemperatureRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
   '/currency': typeof CurrencyRoute
+  '/faq': typeof FaqRoute
   '/length': typeof LengthRoute
   '/privacy': typeof PrivacyRoute
   '/temperature': typeof TemperatureRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/bmi'
     | '/calculator'
     | '/currency'
+    | '/faq'
     | '/length'
     | '/privacy'
     | '/temperature'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/bmi'
     | '/calculator'
     | '/currency'
+    | '/faq'
     | '/length'
     | '/privacy'
     | '/temperature'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/bmi'
     | '/calculator'
     | '/currency'
+    | '/faq'
     | '/length'
     | '/privacy'
     | '/temperature'
@@ -153,6 +165,7 @@ export interface RootRouteChildren {
   BmiRoute: typeof BmiRoute
   CalculatorRoute: typeof CalculatorRoute
   CurrencyRoute: typeof CurrencyRoute
+  FaqRoute: typeof FaqRoute
   LengthRoute: typeof LengthRoute
   PrivacyRoute: typeof PrivacyRoute
   TemperatureRoute: typeof TemperatureRoute
@@ -195,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/length'
       fullPath: '/length'
       preLoaderRoute: typeof LengthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/currency': {
@@ -241,6 +261,7 @@ const rootRouteChildren: RootRouteChildren = {
   BmiRoute: BmiRoute,
   CalculatorRoute: CalculatorRoute,
   CurrencyRoute: CurrencyRoute,
+  FaqRoute: FaqRoute,
   LengthRoute: LengthRoute,
   PrivacyRoute: PrivacyRoute,
   TemperatureRoute: TemperatureRoute,
