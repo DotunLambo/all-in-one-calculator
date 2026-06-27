@@ -21,6 +21,7 @@ export function SiteHeader() {
           <Link to="/currency" className="hover:text-foreground">Currency</Link>
           <Link to="/units" className="hover:text-foreground">Units</Link>
           <Link to="/about" className="hover:text-foreground">About</Link>
+          <Link to="/faq" className="hover:text-foreground">FAQ</Link>
         </nav>
       </div>
     </header>
