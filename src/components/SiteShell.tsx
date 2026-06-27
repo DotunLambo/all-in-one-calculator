@@ -35,6 +35,7 @@ export function SiteFooter() {
         <p>© {new Date().getFullYear()} Utilikit. All rights reserved.</p>
         <nav className="flex gap-5">
           <Link to="/about" className="hover:text-foreground">About</Link>
+          <Link to="/faq" className="hover:text-foreground">FAQ</Link>
           <Link to="/privacy" className="hover:text-foreground">Privacy</Link>
         </nav>
       </div>
