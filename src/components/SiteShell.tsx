@@ -19,9 +19,11 @@ export function SiteHeader() {
           <Link to="/calculator" className="hover:text-foreground">Calculator</Link>
           <Link to="/bmi" className="hover:text-foreground">BMI</Link>
           <Link to="/currency" className="hover:text-foreground">Currency</Link>
+          <Link to="/calories" className="hover:text-foreground">Calories</Link>
           <Link to="/units" className="hover:text-foreground">Units</Link>
           <Link to="/about" className="hover:text-foreground">About</Link>
           <Link to="/faq" className="hover:text-foreground">FAQ</Link>
+          <Link to="/contact" className="hover:text-foreground">Contact</Link>
         </nav>
       </div>
     </header>
@@ -31,11 +33,15 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="mt-16 border-t bg-background/60">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-6 py-6 text-sm text-muted-foreground sm:flex-row">
-        <p>© {new Date().getFullYear()} Utilikit. All rights reserved.</p>
-        <nav className="flex gap-5">
+      <div className="mx-auto max-w-5xl flex flex-col items-center justify-between gap-4 px-6 py-8 text-sm text-muted-foreground sm:flex-row">
+        <div className="text-center sm:text-left">
+          <p>© {new Date().getFullYear()} Utilikit. All rights reserved.</p>
+          <p className="mt-1 text-xs">Designed & developed by Dotun Lambo.</p>
+        </div>
+        <nav className="flex flex-wrap justify-center gap-5">
           <Link to="/about" className="hover:text-foreground">About</Link>
           <Link to="/faq" className="hover:text-foreground">FAQ</Link>
+          <Link to="/contact" className="hover:text-foreground">Contact</Link>
           <Link to="/privacy" className="hover:text-foreground">Privacy</Link>
         </nav>
       </div>
@@ -67,3 +73,4 @@ export function ToolShell({
     </div>
   );
 }
+
