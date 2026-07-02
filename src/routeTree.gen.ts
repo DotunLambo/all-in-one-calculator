@@ -16,6 +16,8 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as LengthRouteImport } from './routes/length'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as CurrencyRouteImport } from './routes/currency'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CaloriesRouteImport } from './routes/calories'
 import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as BmiRouteImport } from './routes/bmi'
 import { Route as AboutRouteImport } from './routes/about'
@@ -56,6 +58,16 @@ const CurrencyRoute = CurrencyRouteImport.update({
   path: '/currency',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaloriesRoute = CaloriesRouteImport.update({
+  id: '/calories',
+  path: '/calories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CalculatorRoute = CalculatorRouteImport.update({
   id: '/calculator',
   path: '/calculator',
@@ -82,6 +94,8 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
+  '/calories': typeof CaloriesRoute
+  '/contact': typeof ContactRoute
   '/currency': typeof CurrencyRoute
   '/faq': typeof FaqRoute
   '/length': typeof LengthRoute
@@ -95,6 +109,8 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
+  '/calories': typeof CaloriesRoute
+  '/contact': typeof ContactRoute
   '/currency': typeof CurrencyRoute
   '/faq': typeof FaqRoute
   '/length': typeof LengthRoute
@@ -109,6 +125,8 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/bmi': typeof BmiRoute
   '/calculator': typeof CalculatorRoute
+  '/calories': typeof CaloriesRoute
+  '/contact': typeof ContactRoute
   '/currency': typeof CurrencyRoute
   '/faq': typeof FaqRoute
   '/length': typeof LengthRoute
@@ -124,6 +142,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/bmi'
     | '/calculator'
+    | '/calories'
+    | '/contact'
     | '/currency'
     | '/faq'
     | '/length'
@@ -137,6 +157,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/bmi'
     | '/calculator'
+    | '/calories'
+    | '/contact'
     | '/currency'
     | '/faq'
     | '/length'
@@ -150,6 +172,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/bmi'
     | '/calculator'
+    | '/calories'
+    | '/contact'
     | '/currency'
     | '/faq'
     | '/length'
@@ -164,6 +188,8 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   BmiRoute: typeof BmiRoute
   CalculatorRoute: typeof CalculatorRoute
+  CaloriesRoute: typeof CaloriesRoute
+  ContactRoute: typeof ContactRoute
   CurrencyRoute: typeof CurrencyRoute
   FaqRoute: typeof FaqRoute
   LengthRoute: typeof LengthRoute
@@ -224,6 +250,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CurrencyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calories': {
+      id: '/calories'
+      path: '/calories'
+      fullPath: '/calories'
+      preLoaderRoute: typeof CaloriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/calculator': {
       id: '/calculator'
       path: '/calculator'
@@ -260,6 +300,8 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   BmiRoute: BmiRoute,
   CalculatorRoute: CalculatorRoute,
+  CaloriesRoute: CaloriesRoute,
+  ContactRoute: ContactRoute,
   CurrencyRoute: CurrencyRoute,
   FaqRoute: FaqRoute,
   LengthRoute: LengthRoute,

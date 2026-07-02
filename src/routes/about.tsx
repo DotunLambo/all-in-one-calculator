@@ -5,7 +5,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — Utilikit" },
-      { name: "description", content: "About Utilikit — a free suite of everyday calculators and converters." },
+      { name: "description", content: "About Utilikit — a free suite of everyday calculators and converters built by Dotun Lambo." },
       { property: "og:title", content: "About — Utilikit" },
       { property: "og:description", content: "Learn more about Utilikit and the tools we offer." },
     ],
@@ -19,8 +19,8 @@ function AboutPage() {
       <div className="prose prose-neutral dark:prose-invert max-w-none space-y-4 text-foreground">
         <p>
           Utilikit is a small collection of practical online tools — a calculator,
-          a BMI estimator, a live currency converter, and a unit converter — built
-          to be fast, clean, and accessible from any device.
+          a BMI estimator, a live currency converter, a calorie calculator, and a
+          unit converter — built to be fast, clean, and accessible from any device.
         </p>
         <p>
           Our goal is to make everyday calculations effortless. No sign-ups, no
@@ -33,14 +33,24 @@ function AboutPage() {
           <li><Link to="/calculator" className="text-primary hover:underline">Calculator</Link> — arithmetic in a clean keypad.</li>
           <li><Link to="/bmi" className="text-primary hover:underline">BMI</Link> — body mass index from height & weight.</li>
           <li><Link to="/currency" className="text-primary hover:underline">Currency</Link> — live exchange rates worldwide.</li>
+          <li><Link to="/calories" className="text-primary hover:underline">Calories</Link> — daily calorie needs estimate.</li>
           <li><Link to="/units" className="text-primary hover:underline">Units</Link> — length, mass, temperature, volume & time.</li>
         </ul>
+        <h2 className="mt-8 text-xl font-semibold">About the developer</h2>
+        <p>
+          Utilikit was designed and developed by{" "}
+          <span className="font-semibold">Dotun Lambo</span>. He builds
+          practical, user-focused web tools that solve everyday problems without
+          unnecessary complexity.
+        </p>
         <h2 className="mt-8 text-xl font-semibold">Contact</h2>
         <p>
-          Questions or feedback? Reach out via the contact details listed on our
-          privacy page. We'd love to hear from you.
+          Questions or feedback? Reach out via the{" "}
+          <Link to="/contact" className="text-primary hover:underline">contact page</Link>
+          {" "}or the details listed on our privacy page. We'd love to hear from you.
         </p>
       </div>
     </ToolShell>
   );
 }
+
