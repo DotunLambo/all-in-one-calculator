@@ -2,8 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ToolShell } from "@/components/SiteShell";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { Landmark, NairaSign } from "lucide-react";
 import { useMemo, useState } from "react";
 
 export const Route = createFileRoute("/loan")({
