@@ -99,17 +99,13 @@ function LoanPage() {
           <div className="grid gap-5 sm:grid-cols-3">
             <div className="space-y-2">
               <Label htmlFor="amount">Loan amount (₦)</Label>
-              <div className="relative">
-                <NairaSign className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  id="amount"
-                  type="number"
-                  min={0}
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  className="pl-9"
-                />
-              </div>
+              <Input
+                id="amount"
+                type="number"
+                min={0}
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
             </div>
             <div className="space-y-2">
               <Label htmlFor="rate">Annual interest rate (%)</Label>
