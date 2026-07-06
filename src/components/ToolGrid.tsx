@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Calculator, HeartPulse, Banknote, Ruler, Weight, Thermometer, Flame } from "lucide-react";
+import { Calculator, HeartPulse, Banknote, Ruler, Weight, Thermometer, Flame, Landmark } from "lucide-react";
 
 const tools = [
   { to: "/calculator", title: "Calculator", desc: "Quick arithmetic with a clean keypad.", icon: Calculator },
@@ -9,6 +9,7 @@ const tools = [
   { to: "/length", title: "Length", desc: "Meters, miles, feet, inches and more.", icon: Ruler },
   { to: "/weight", title: "Weight", desc: "Kilograms, pounds, ounces and tonnes.", icon: Weight },
   { to: "/temperature", title: "Temperature", desc: "Celsius, Fahrenheit and Kelvin.", icon: Thermometer },
+  { to: "/loan", title: "Nigeria Loan", desc: "EMI, interest and repayment schedule in Naira.", icon: Landmark },
 ] as const;
 
 export function ToolGrid() {

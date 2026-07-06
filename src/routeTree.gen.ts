@@ -13,6 +13,7 @@ import { Route as WeightRouteImport } from './routes/weight'
 import { Route as UnitsRouteImport } from './routes/units'
 import { Route as TemperatureRouteImport } from './routes/temperature'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as LoanRouteImport } from './routes/loan'
 import { Route as LengthRouteImport } from './routes/length'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as CurrencyRouteImport } from './routes/currency'
@@ -41,6 +42,11 @@ const TemperatureRoute = TemperatureRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoanRoute = LoanRouteImport.update({
+  id: '/loan',
+  path: '/loan',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LengthRoute = LengthRouteImport.update({
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/currency': typeof CurrencyRoute
   '/faq': typeof FaqRoute
   '/length': typeof LengthRoute
+  '/loan': typeof LoanRoute
   '/privacy': typeof PrivacyRoute
   '/temperature': typeof TemperatureRoute
   '/units': typeof UnitsRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/currency': typeof CurrencyRoute
   '/faq': typeof FaqRoute
   '/length': typeof LengthRoute
+  '/loan': typeof LoanRoute
   '/privacy': typeof PrivacyRoute
   '/temperature': typeof TemperatureRoute
   '/units': typeof UnitsRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/currency': typeof CurrencyRoute
   '/faq': typeof FaqRoute
   '/length': typeof LengthRoute
+  '/loan': typeof LoanRoute
   '/privacy': typeof PrivacyRoute
   '/temperature': typeof TemperatureRoute
   '/units': typeof UnitsRoute
@@ -147,6 +156,7 @@ export interface FileRouteTypes {
     | '/currency'
     | '/faq'
     | '/length'
+    | '/loan'
     | '/privacy'
     | '/temperature'
     | '/units'
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/currency'
     | '/faq'
     | '/length'
+    | '/loan'
     | '/privacy'
     | '/temperature'
     | '/units'
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/currency'
     | '/faq'
     | '/length'
+    | '/loan'
     | '/privacy'
     | '/temperature'
     | '/units'
@@ -193,6 +205,7 @@ export interface RootRouteChildren {
   CurrencyRoute: typeof CurrencyRoute
   FaqRoute: typeof FaqRoute
   LengthRoute: typeof LengthRoute
+  LoanRoute: typeof LoanRoute
   PrivacyRoute: typeof PrivacyRoute
   TemperatureRoute: typeof TemperatureRoute
   UnitsRoute: typeof UnitsRoute
@@ -227,6 +240,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loan': {
+      id: '/loan'
+      path: '/loan'
+      fullPath: '/loan'
+      preLoaderRoute: typeof LoanRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/length': {
@@ -305,6 +325,7 @@ const rootRouteChildren: RootRouteChildren = {
   CurrencyRoute: CurrencyRoute,
   FaqRoute: FaqRoute,
   LengthRoute: LengthRoute,
+  LoanRoute: LoanRoute,
   PrivacyRoute: PrivacyRoute,
   TemperatureRoute: TemperatureRoute,
   UnitsRoute: UnitsRoute,
@@ -313,3 +334,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
