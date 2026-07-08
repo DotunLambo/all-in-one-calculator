@@ -7,9 +7,9 @@ import { useMemo, useState } from "react";
 export const Route = createFileRoute("/loan")({
   head: () => ({
     meta: [
-      { title: "Nigeria Loan Calculator — Utilikit" },
+      { title: "Loan Calculator Nigeria - Monthly Payment for Naira" },
       { name: "description", content: "Estimate monthly repayments, total interest and total cost for Nigerian loans in Naira." },
-      { property: "og:title", content: "Nigeria Loan Calculator — Utilikit" },
+      { property: "og:title", content: "Loan Calculator Nigeria - Monthly Payment for Naira" },
       { property: "og:description", content: "Calculate monthly EMI, total interest and repayment schedule for Naira loans." },
     ],
   }),
