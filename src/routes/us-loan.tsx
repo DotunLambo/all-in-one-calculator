@@ -1,8 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ToolShell } from "@/components/SiteShell";
+import { RelatedTools } from "@/components/RelatedTools";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useMemo, useState } from "react";
+
+const LOAN_US_FAQ = [
+  {
+    q: "How is a US mortgage payment calculated?",
+    a: "US mortgage payments use the standard amortisation formula M = P × r × (1+r)ⁿ / ((1+r)ⁿ − 1), where P is the loan principal, r is the monthly interest rate (annual APR ÷ 12) and n is the number of monthly payments (loan term in years × 12).",
+  },
+  {
+    q: "What is the difference between a mortgage and a personal loan?",
+    a: "A mortgage is secured by the property you buy, typically has a lower interest rate and a 15-30 year term. A personal loan is unsecured, has a higher rate and usually a 2-7 year term. Use the toggle above to switch between the two with sensible default rates and terms.",
+  },
+  {
+    q: "Does this calculator include taxes, insurance and PMI?",
+    a: "No. It shows principal and interest only. A full US mortgage payment (PITI) also includes property taxes, homeowners insurance and often PMI or HOA dues. Add roughly 1-1.5% of the home price per year for taxes and insurance in most states.",
+  },
+  {
+    q: "What is a good interest rate for a US personal loan?",
+    a: "Personal loan APRs in the US typically range from about 7% for excellent credit to 30%+ for lower credit scores. Rates depend on your credit score, income, loan term and the lender.",
+  },
+  {
+    q: "How much interest will I pay over the life of my loan?",
+    a: "Enter your loan amount, rate and term above — the calculator shows total interest and total repayment instantly, plus a full month-by-month amortisation schedule.",
+  },
+];
 
 export const Route = createFileRoute("/us-loan")({
   head: () => ({
@@ -13,6 +37,20 @@ export const Route = createFileRoute("/us-loan")({
       { property: "og:description", content: "Estimate monthly mortgage or personal loan payments, interest and amortization schedule." },
     ],
     links: [{ rel: "canonical", href: "/us-loan" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: LOAN_US_FAQ.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: USLoanPage,
 });
