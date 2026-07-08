@@ -10,6 +10,7 @@ const tools = [
   { to: "/weight", title: "Weight", desc: "Kilograms, pounds, ounces and tonnes.", icon: Weight },
   { to: "/temperature", title: "Temperature", desc: "Celsius, Fahrenheit and Kelvin.", icon: Thermometer },
   { to: "/loan", title: "Nigeria Loan", desc: "EMI, interest and repayment schedule in Naira.", icon: Landmark },
+  { to: "/us-loan", title: "US Loan", desc: "Mortgage & personal loan payments in dollars.", icon: Landmark },
 ] as const;
 
 export function ToolGrid() {
