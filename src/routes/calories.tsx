@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ToolShell } from "@/components/SiteShell";
+import { RelatedTools } from "@/components/RelatedTools";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -150,6 +151,15 @@ function CaloriesPage() {
         <p className="text-xs text-muted-foreground">
           This calculator provides estimates only. Consult a healthcare professional before making significant dietary changes.
         </p>
+
+        <RelatedTools
+          links={[
+            { to: "/bmi", label: "Check your BMI (Body Mass Index)", desc: "Pair your calorie plan with a healthy BMI target." },
+            { to: "/weight", label: "Convert weight — kg, lb, stones", desc: "Convert your weight to plug into the calorie formula." },
+            { to: "/length", label: "Convert height — cm to feet & inches", desc: "Enter your height in whichever unit you prefer." },
+            { to: "/calculator", label: "Basic calculator", desc: "Quick math for daily calorie totals." },
+          ]}
+        />
       </div>
     </ToolShell>
   );
