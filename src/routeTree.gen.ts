@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WeightRouteImport } from './routes/weight'
+import { Route as UsLoanRouteImport } from './routes/us-loan'
 import { Route as UnitsRouteImport } from './routes/units'
 import { Route as TemperatureRouteImport } from './routes/temperature'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -27,6 +28,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const WeightRoute = WeightRouteImport.update({
   id: '/weight',
   path: '/weight',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsLoanRoute = UsLoanRouteImport.update({
+  id: '/us-loan',
+  path: '/us-loan',
   getParentRoute: () => rootRouteImport,
 } as any)
 const UnitsRoute = UnitsRouteImport.update({
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/temperature': typeof TemperatureRoute
   '/units': typeof UnitsRoute
+  '/us-loan': typeof UsLoanRoute
   '/weight': typeof WeightRoute
 }
 export interface FileRoutesByTo {
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/temperature': typeof TemperatureRoute
   '/units': typeof UnitsRoute
+  '/us-loan': typeof UsLoanRoute
   '/weight': typeof WeightRoute
 }
 export interface FileRoutesById {
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/temperature': typeof TemperatureRoute
   '/units': typeof UnitsRoute
+  '/us-loan': typeof UsLoanRoute
   '/weight': typeof WeightRoute
 }
 export interface FileRouteTypes {
@@ -160,6 +169,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/temperature'
     | '/units'
+    | '/us-loan'
     | '/weight'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -176,6 +186,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/temperature'
     | '/units'
+    | '/us-loan'
     | '/weight'
   id:
     | '__root__'
@@ -192,6 +203,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/temperature'
     | '/units'
+    | '/us-loan'
     | '/weight'
   fileRoutesById: FileRoutesById
 }
@@ -209,6 +221,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   TemperatureRoute: typeof TemperatureRoute
   UnitsRoute: typeof UnitsRoute
+  UsLoanRoute: typeof UsLoanRoute
   WeightRoute: typeof WeightRoute
 }
 
@@ -219,6 +232,13 @@ declare module '@tanstack/react-router' {
       path: '/weight'
       fullPath: '/weight'
       preLoaderRoute: typeof WeightRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/us-loan': {
+      id: '/us-loan'
+      path: '/us-loan'
+      fullPath: '/us-loan'
+      preLoaderRoute: typeof UsLoanRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/units': {
@@ -329,6 +349,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   TemperatureRoute: TemperatureRoute,
   UnitsRoute: UnitsRoute,
+  UsLoanRoute: UsLoanRoute,
   WeightRoute: WeightRoute,
 }
 export const routeTree = rootRouteImport
