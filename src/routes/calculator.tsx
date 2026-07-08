@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ToolShell } from "@/components/SiteShell";
+import { RelatedTools } from "@/components/RelatedTools";
 
 export const Route = createFileRoute("/calculator")({
   head: () => ({
@@ -91,6 +92,17 @@ function CalculatorPage() {
           })}
         </div>
       </div>
+
+      <RelatedTools
+        links={[
+          { to: "/bmi", label: "BMI calculator", desc: "Body Mass Index from height and weight." },
+          { to: "/calories", label: "Daily calorie calculator", desc: "Estimate the calories you need each day." },
+          { to: "/currency", label: "Currency converter", desc: "Live exchange rates between 20+ currencies." },
+          { to: "/loan", label: "Loan interest in Nigeria — Naira EMI calculator", desc: "Monthly repayment and total interest in Naira." },
+          { to: "/us-loan", label: "US mortgage & personal loan calculator", desc: "Monthly loan payments in dollars." },
+          { to: "/units", label: "All unit converters", desc: "Length, weight, temperature and more." },
+        ]}
+      />
     </ToolShell>
   );
 }
