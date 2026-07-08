@@ -203,6 +203,30 @@ function LoanPage() {
         <p className="text-xs text-muted-foreground">
           This is an estimate. Actual repayment amounts may vary based on lender fees, insurance, charges and the specific terms of your loan.
         </p>
+
+        <section className="rounded-3xl border bg-card p-6 shadow-[var(--shadow-soft)]" style={{ background: "var(--gradient-card)" }} aria-labelledby="loan-ng-faq-heading">
+          <h2 id="loan-ng-faq-heading" className="text-xl font-semibold tracking-tight">Nigeria loan calculator FAQ</h2>
+          <div className="mt-4 divide-y">
+            {LOAN_NG_FAQ.map((item) => (
+              <details key={item.q} className="group py-3">
+                <summary className="cursor-pointer list-none font-medium text-foreground marker:content-none">
+                  <span className="mr-2 inline-block transition group-open:rotate-90">›</span>
+                  {item.q}
+                </summary>
+                <p className="mt-2 pl-5 text-sm text-muted-foreground">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <RelatedTools
+          links={[
+            { to: "/us-loan", label: "US loan calculator — mortgage & personal loan payments", desc: "Same maths in dollars for US mortgages and personal loans." },
+            { to: "/currency", label: "Currency converter — Naira to USD, GBP, EUR", desc: "Compare loan amounts across currencies." },
+            { to: "/calculator", label: "Basic calculator", desc: "Quick arithmetic for interest, fees and totals." },
+            { to: "/calories", label: "Daily calorie calculator", desc: "Explore more free everyday tools." },
+          ]}
+        />
       </div>
     </ToolShell>
   );
