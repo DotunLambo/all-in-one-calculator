@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ArrowLeftRight } from "lucide-react";
 import { ToolShell } from "@/components/SiteShell";
+import { RelatedTools } from "@/components/RelatedTools";
 
 export const Route = createFileRoute("/currency")({
   head: () => ({
@@ -69,6 +70,15 @@ function CurrencyPage() {
           {error && <div className="mt-2 text-xs text-destructive">{error}</div>}
         </div>
       </div>
+
+      <RelatedTools
+        links={[
+          { to: "/loan", label: "Loan interest in Nigeria — Naira loan calculator", desc: "Estimate monthly EMI and total interest in Naira." },
+          { to: "/us-loan", label: "US mortgage & personal loan calculator", desc: "Monthly mortgage or personal loan payments in dollars." },
+          { to: "/calculator", label: "Basic calculator", desc: "Handy for quick FX math." },
+          { to: "/units", label: "All unit converters", desc: "Length, weight, temperature and more." },
+        ]}
+      />
     </ToolShell>
   );
 }

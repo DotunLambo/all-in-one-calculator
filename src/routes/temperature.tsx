@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ToolShell } from "@/components/SiteShell";
+import { RelatedTools } from "@/components/RelatedTools";
 
 export const Route = createFileRoute("/temperature")({
   head: () => ({
@@ -36,6 +37,15 @@ function TempPage() {
           <Pair label="To" unit={to} onUnit={(u) => setTo(u as U)} value={+result.toFixed(4)} onValue={() => {}} />
         </div>
       </div>
+
+      <RelatedTools
+        links={[
+          { to: "/length", label: "Length converter — meters, feet, miles", desc: "Convert distances between metric and imperial." },
+          { to: "/weight", label: "Weight converter — kg to lb", desc: "Great for cooking and shipping conversions." },
+          { to: "/calculator", label: "Basic calculator", desc: "Quick arithmetic for weather or cooking math." },
+          { to: "/units", label: "All unit converters", desc: "Browse every converter in one place." },
+        ]}
+      />
     </ToolShell>
   );
 }

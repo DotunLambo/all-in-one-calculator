@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ToolShell } from "@/components/SiteShell";
+import { RelatedTools } from "@/components/RelatedTools";
 
 export const Route = createFileRoute("/length")({
   head: () => ({
@@ -34,6 +35,15 @@ function LengthPage() {
           <Pair label="To" unit={to} units={list} onUnit={setTo} value={+result.toFixed(6)} onValue={() => {}} />
         </div>
       </div>
+
+      <RelatedTools
+        links={[
+          { to: "/weight", label: "Weight converter — kg, lb, stones", desc: "Metric and imperial mass conversions." },
+          { to: "/temperature", label: "Temperature converter — °C, °F, K", desc: "Convert between common temperature scales." },
+          { to: "/bmi", label: "BMI calculator", desc: "Enter your height in metric or imperial." },
+          { to: "/units", label: "All unit converters", desc: "Every converter in one place." },
+        ]}
+      />
     </ToolShell>
   );
 }

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ToolShell } from "@/components/SiteShell";
+import { RelatedTools } from "@/components/RelatedTools";
 
 export const Route = createFileRoute("/bmi")({
   head: () => ({
@@ -58,6 +59,15 @@ function BMIPage() {
           )}
         </div>
       </div>
+
+      <RelatedTools
+        links={[
+          { to: "/calories", label: "How to lose weight — daily calorie calculator", desc: "Estimate the calories you need to lose or maintain weight." },
+          { to: "/weight", label: "Convert weight (kg, lb, stones)", desc: "Switch between metric and imperial weight units." },
+          { to: "/length", label: "Convert height (cm, ft, in)", desc: "Handy for entering height in either measurement system." },
+          { to: "/calculator", label: "Open the basic calculator", desc: "Quick arithmetic for your BMI targets." },
+        ]}
+      />
     </ToolShell>
   );
 }

@@ -1,8 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ToolShell } from "@/components/SiteShell";
+import { RelatedTools } from "@/components/RelatedTools";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useMemo, useState } from "react";
+
+const LOAN_NG_FAQ = [
+  {
+    q: "How is loan interest calculated in Nigeria?",
+    a: "Nigerian lenders typically use either the reducing-balance (amortised) method, where interest is charged on the outstanding balance each month, or the flat-rate method, where interest is charged on the original principal for the entire term. This calculator supports both methods so you can compare monthly repayments and total interest in Naira.",
+  },
+  {
+    q: "What is the difference between flat rate and reducing balance in Naira loans?",
+    a: "With a flat rate, interest is fixed on the original loan amount, so total interest is higher and each repayment is equal. With reducing balance, interest is recalculated each month on the remaining principal, so you pay less interest overall. Most Nigerian banks quote reducing-balance rates for mortgages and salary loans.",
+  },
+  {
+    q: "How do I calculate monthly loan repayment in Naira?",
+    a: "Enter the loan amount in Naira, the annual interest rate in %, and the tenure in months. The calculator computes the EMI (Equated Monthly Instalment) using P × r × (1+r)ⁿ / ((1+r)ⁿ − 1), where r is the monthly rate and n is the number of months.",
+  },
+  {
+    q: "Are Nigerian bank loan interest rates fixed or variable?",
+    a: "Both exist. Commercial banks in Nigeria offer fixed-rate personal and salary loans as well as variable-rate mortgages tied to the CBN Monetary Policy Rate (MPR). Always confirm the rate type in your loan offer letter before signing.",
+  },
+  {
+    q: "Does this calculator include bank fees and insurance?",
+    a: "No. It shows principal and interest only. Nigerian lenders may add management fees, insurance, legal fees or credit-life cover — check the total cost of credit in your loan offer for the final amount.",
+  },
+];
 
 export const Route = createFileRoute("/loan")({
   head: () => ({
@@ -11,6 +35,21 @@ export const Route = createFileRoute("/loan")({
       { name: "description", content: "Estimate monthly repayments, total interest and total cost for Nigerian loans in Naira." },
       { property: "og:title", content: "Loan Calculator Nigeria - Monthly Payment for Naira" },
       { property: "og:description", content: "Calculate monthly EMI, total interest and repayment schedule for Naira loans." },
+    ],
+    links: [{ rel: "canonical", href: "/loan" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: LOAN_NG_FAQ.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }),
+      },
     ],
   }),
   component: LoanPage,
@@ -164,6 +203,30 @@ function LoanPage() {
         <p className="text-xs text-muted-foreground">
           This is an estimate. Actual repayment amounts may vary based on lender fees, insurance, charges and the specific terms of your loan.
         </p>
+
+        <section className="rounded-3xl border bg-card p-6 shadow-[var(--shadow-soft)]" style={{ background: "var(--gradient-card)" }} aria-labelledby="loan-ng-faq-heading">
+          <h2 id="loan-ng-faq-heading" className="text-xl font-semibold tracking-tight">Nigeria loan calculator FAQ</h2>
+          <div className="mt-4 divide-y">
+            {LOAN_NG_FAQ.map((item) => (
+              <details key={item.q} className="group py-3">
+                <summary className="cursor-pointer list-none font-medium text-foreground marker:content-none">
+                  <span className="mr-2 inline-block transition group-open:rotate-90">›</span>
+                  {item.q}
+                </summary>
+                <p className="mt-2 pl-5 text-sm text-muted-foreground">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <RelatedTools
+          links={[
+            { to: "/us-loan", label: "US loan calculator — mortgage & personal loan payments", desc: "Same maths in dollars for US mortgages and personal loans." },
+            { to: "/currency", label: "Currency converter — Naira to USD, GBP, EUR", desc: "Compare loan amounts across currencies." },
+            { to: "/calculator", label: "Basic calculator", desc: "Quick arithmetic for interest, fees and totals." },
+            { to: "/calories", label: "Daily calorie calculator", desc: "Explore more free everyday tools." },
+          ]}
+        />
       </div>
     </ToolShell>
   );
