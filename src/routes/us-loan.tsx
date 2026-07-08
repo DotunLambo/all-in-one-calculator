@@ -193,6 +193,30 @@ function USLoanPage() {
         <p className="text-xs text-muted-foreground">
           Estimates only. Actual payments may include taxes, insurance, PMI, HOA fees, origination fees and other charges depending on your lender and loan terms.
         </p>
+
+        <section className="rounded-3xl border bg-card p-6 shadow-[var(--shadow-soft)]" style={{ background: "var(--gradient-card)" }} aria-labelledby="loan-us-faq-heading">
+          <h2 id="loan-us-faq-heading" className="text-xl font-semibold tracking-tight">US mortgage & personal loan FAQ</h2>
+          <div className="mt-4 divide-y">
+            {LOAN_US_FAQ.map((item) => (
+              <details key={item.q} className="group py-3">
+                <summary className="cursor-pointer list-none font-medium text-foreground marker:content-none">
+                  <span className="mr-2 inline-block transition group-open:rotate-90">›</span>
+                  {item.q}
+                </summary>
+                <p className="mt-2 pl-5 text-sm text-muted-foreground">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <RelatedTools
+          links={[
+            { to: "/loan", label: "Nigeria loan calculator — Naira EMI & interest", desc: "Same amortisation maths applied to Naira loans." },
+            { to: "/currency", label: "Currency converter — USD to Naira, GBP, EUR", desc: "Convert your loan amount across currencies." },
+            { to: "/calculator", label: "Basic calculator", desc: "Handy for quick fee, tax and interest math." },
+            { to: "/bmi", label: "BMI calculator", desc: "Explore more free everyday tools." },
+          ]}
+        />
       </div>
     </ToolShell>
   );
