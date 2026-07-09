@@ -6,11 +6,15 @@ import { RelatedTools } from "@/components/RelatedTools";
 export const Route = createFileRoute("/weight")({
   head: () => ({
     meta: [
-      { title: "Weight Converter — Utilikit" },
-      { name: "description", content: "Convert kilograms, grams, pounds, ounces, stones and tonnes." },
-      { property: "og:title", content: "Weight Converter — Utilikit" },
-      { property: "og:description", content: "Fast, accurate weight and mass conversions." },
+      { title: "Weight Converter — Kg, Lb, Grams, Ounces & Stones" },
+      { name: "description", content: "Instantly convert kilograms, grams, pounds, ounces, stones and tonnes for cooking, fitness, shipping and everyday weighing tasks." },
+      { name: "keywords", content: "weight converter, kg to lb, pounds to kg, grams to ounces, stones to pounds, mass converter" },
+      { property: "og:title", content: "Weight Converter — Metric & Imperial Mass" },
+      { property: "og:description", content: "Convert between kg, lb, g, oz, stones and tonnes in one click." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/weight" },
     ],
+    links: [{ rel: "canonical", href: "/weight" }],
   }),
   component: WeightPage,
 });
