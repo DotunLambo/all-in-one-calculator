@@ -5,11 +5,15 @@ import { ToolGrid } from "@/components/ToolGrid";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Utilikit — Everyday calculators & converters" },
-      { name: "description", content: "Free online calculator, BMI, currency converter and unit converter — fast, clean and ad-free." },
-      { property: "og:title", content: "Utilikit — Everyday calculators & converters" },
-      { property: "og:description", content: "Calculator, BMI, currency and unit conversion in one place." },
+      { title: "Utilikit — Free Everyday Calculators, Converters & Loan Tools" },
+      { name: "description", content: "One clean home for a free online calculator, BMI, calorie planner, currency and unit converters, plus Nigeria and US loan calculators — all in your browser." },
+      { name: "keywords", content: "free online calculators, BMI calculator, calorie calculator, currency converter, unit converter, loan calculator, mortgage calculator, Utilikit" },
+      { property: "og:title", content: "Utilikit — Free Everyday Calculators & Converters" },
+      { property: "og:description", content: "Fast, free calculators and converters: BMI, calories, currency, length, weight, temperature and loan payments — no sign-up." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });
