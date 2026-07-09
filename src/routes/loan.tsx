@@ -32,9 +32,12 @@ export const Route = createFileRoute("/loan")({
   head: () => ({
     meta: [
       { title: "Loan Calculator Nigeria - Monthly Payment for Naira" },
-      { name: "description", content: "Estimate monthly repayments, total interest and total cost for Nigerian loans in Naira." },
-      { property: "og:title", content: "Loan Calculator Nigeria - Monthly Payment for Naira" },
+      { name: "description", content: "Free Nigerian loan calculator: work out monthly EMI, total interest and full repayment schedule in Naira with reducing-balance or flat-rate methods." },
+      { name: "keywords", content: "loan calculator Nigeria, Naira loan calculator, loan interest in Nigeria, EMI calculator Nigeria, reducing balance loan, flat rate loan, mortgage Nigeria" },
+      { property: "og:title", content: "Loan Calculator Nigeria — Monthly Naira Payment" },
       { property: "og:description", content: "Calculate monthly EMI, total interest and repayment schedule for Naira loans." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/loan" },
     ],
     links: [{ rel: "canonical", href: "/loan" }],
     scripts: [
