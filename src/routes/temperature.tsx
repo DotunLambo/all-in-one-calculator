@@ -6,11 +6,15 @@ import { RelatedTools } from "@/components/RelatedTools";
 export const Route = createFileRoute("/temperature")({
   head: () => ({
     meta: [
-      { title: "Temperature Converter — Utilikit" },
-      { name: "description", content: "Convert Celsius, Fahrenheit and Kelvin instantly." },
-      { property: "og:title", content: "Temperature Converter — Utilikit" },
-      { property: "og:description", content: "Fast, accurate temperature conversions." },
+      { title: "Temperature Converter — Celsius, Fahrenheit & Kelvin" },
+      { name: "description", content: "Convert Celsius to Fahrenheit, Fahrenheit to Celsius and Kelvin instantly — handy for weather, oven temps, science homework and travel." },
+      { name: "keywords", content: "temperature converter, celsius to fahrenheit, fahrenheit to celsius, kelvin converter, °C to °F, oven temperature converter" },
+      { property: "og:title", content: "Temperature Converter — °C, °F, K" },
+      { property: "og:description", content: "Convert Celsius, Fahrenheit and Kelvin instantly." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/temperature" },
     ],
+    links: [{ rel: "canonical", href: "/temperature" }],
   }),
   component: TempPage,
 });
