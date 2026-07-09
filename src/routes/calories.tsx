@@ -9,11 +9,15 @@ import { useState } from "react";
 export const Route = createFileRoute("/calories")({
   head: () => ({
     meta: [
-      { title: "Calorie Calculator — Utilikit" },
-      { name: "description", content: "Estimate daily calorie needs with the Mifflin-St Jeor equation." },
-      { property: "og:title", content: "Calorie Calculator — Utilikit" },
-      { property: "og:description", content: "Calculate your daily maintenance and deficit calories." },
+      { title: "Calorie Calculator — Daily TDEE & Weight Loss Calories" },
+      { name: "description", content: "Estimate BMR and daily calories using the Mifflin-St Jeor equation, then plan a safe deficit for weight loss or a surplus for muscle gain." },
+      { name: "keywords", content: "calorie calculator, TDEE calculator, BMR calculator, Mifflin St Jeor, daily calories, weight loss calories, maintenance calories" },
+      { property: "og:title", content: "Calorie Calculator — TDEE & Weight Loss" },
+      { property: "og:description", content: "Daily calorie needs for maintenance, weight loss and muscle gain." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/calories" },
     ],
+    links: [{ rel: "canonical", href: "/calories" }],
   }),
   component: CaloriesPage,
 });

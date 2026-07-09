@@ -32,9 +32,12 @@ export const Route = createFileRoute("/us-loan")({
   head: () => ({
     meta: [
       { title: "US Loan Calculator - Mortgage & Personal Loan Payment" },
-      { name: "description", content: "Calculate monthly payments, total interest and amortization for US mortgages and personal loans in dollars." },
-      { property: "og:title", content: "US Loan Calculator - Mortgage & Personal Loan Payment" },
+      { name: "description", content: "American loan calculator for 15/30-year mortgages and personal loans: monthly payment, total interest and full amortization schedule in US dollars." },
+      { name: "keywords", content: "US loan calculator, mortgage calculator, personal loan calculator, amortization schedule, monthly mortgage payment, home loan calculator USA" },
+      { property: "og:title", content: "US Loan Calculator — Mortgage & Personal Loan" },
       { property: "og:description", content: "Estimate monthly mortgage or personal loan payments, interest and amortization schedule." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/us-loan" },
     ],
     links: [{ rel: "canonical", href: "/us-loan" }],
     scripts: [

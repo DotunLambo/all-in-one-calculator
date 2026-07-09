@@ -6,11 +6,15 @@ import { RelatedTools } from "@/components/RelatedTools";
 export const Route = createFileRoute("/length")({
   head: () => ({
     meta: [
-      { title: "Length Converter — Utilikit" },
-      { name: "description", content: "Convert meters, kilometers, miles, feet, inches and more." },
-      { property: "og:title", content: "Length Converter — Utilikit" },
-      { property: "og:description", content: "Fast, accurate length and distance conversions." },
+      { title: "Length Converter — Meters, Feet, Miles, Inches & More" },
+      { name: "description", content: "Convert meters, kilometers, centimeters, miles, yards, feet and inches in a snap — perfect for DIY projects, travel distances and running splits." },
+      { name: "keywords", content: "length converter, meters to feet, cm to inches, km to miles, distance converter, metric imperial length" },
+      { property: "og:title", content: "Length Converter — Metric & Imperial" },
+      { property: "og:description", content: "Fast length conversions between metric and imperial units." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/length" },
     ],
+    links: [{ rel: "canonical", href: "/length" }],
   }),
   component: LengthPage,
 });

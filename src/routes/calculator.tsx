@@ -6,9 +6,15 @@ import { RelatedTools } from "@/components/RelatedTools";
 export const Route = createFileRoute("/calculator")({
   head: () => ({
     meta: [
-      { title: "Calculator — Utilikit" },
-      { name: "description", content: "A simple, fast online calculator for everyday math." },
+      { title: "Online Calculator — Fast & Free Basic Math Calculator" },
+      { name: "description", content: "A clean, keyboard-friendly online calculator for addition, subtraction, multiplication, division and percentages — no ads clutter, no download." },
+      { name: "keywords", content: "online calculator, basic calculator, percentage calculator, free calculator, math calculator, simple calculator" },
+      { property: "og:title", content: "Online Calculator — Fast, Free & Simple" },
+      { property: "og:description", content: "Everyday arithmetic in a clean web calculator." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/calculator" },
     ],
+    links: [{ rel: "canonical", href: "/calculator" }],
   }),
   component: CalculatorPage,
 });

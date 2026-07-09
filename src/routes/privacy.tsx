@@ -4,11 +4,15 @@ import { ToolShell } from "@/components/SiteShell";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Utilikit" },
-      { name: "description", content: "Privacy policy for Utilikit, including information about advertising and cookies." },
+      { title: "Privacy Policy — Cookies, Ads & Data at Utilikit" },
+      { name: "description", content: "Read Utilikit's plain-English privacy policy: what data we collect, how Google AdSense cookies work and the choices you have over personalised ads." },
+      { name: "keywords", content: "Utilikit privacy policy, cookies policy, AdSense privacy, personalised ads, data protection" },
       { property: "og:title", content: "Privacy Policy — Utilikit" },
-      { property: "og:description", content: "How Utilikit handles your data, cookies, and advertising." },
+      { property: "og:description", content: "How Utilikit handles your data, cookies and advertising." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/privacy" },
     ],
+    links: [{ rel: "canonical", href: "/privacy" }],
   }),
   component: PrivacyPage,
 });

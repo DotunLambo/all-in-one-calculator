@@ -5,9 +5,15 @@ import { ToolShell } from "@/components/SiteShell";
 export const Route = createFileRoute("/units")({
   head: () => ({
     meta: [
-      { title: "Unit Converter — Utilikit" },
-      { name: "description", content: "Convert length, mass, temperature, volume and time units." },
+      { title: "Unit Converter — Length, Mass, Volume, Time & Temperature" },
+      { name: "description", content: "One universal unit converter for length, mass, temperature, volume and time — switch categories and units without leaving the page." },
+      { name: "keywords", content: "unit converter, universal converter, length mass volume, time converter, temperature converter, metric imperial" },
+      { property: "og:title", content: "Universal Unit Converter" },
+      { property: "og:description", content: "Convert length, mass, temperature, volume and time from one place." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/units" },
     ],
+    links: [{ rel: "canonical", href: "/units" }],
   }),
   component: UnitsPage,
 });

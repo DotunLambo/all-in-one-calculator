@@ -7,9 +7,15 @@ import { RelatedTools } from "@/components/RelatedTools";
 export const Route = createFileRoute("/currency")({
   head: () => ({
     meta: [
-      { title: "Currency Converter — Utilikit" },
-      { name: "description", content: "Convert between world currencies with live exchange rates." },
+      { title: "Currency Converter — Live USD, EUR, GBP, NGN Rates" },
+      { name: "description", content: "Convert USD, EUR, GBP, Naira, Yen, Rupee and 20+ currencies with live exchange rates refreshed daily — great for travel, freelancing and shopping abroad." },
+      { name: "keywords", content: "currency converter, live exchange rates, USD to NGN, GBP to USD, EUR converter, Naira exchange rate, foreign exchange calculator" },
+      { property: "og:title", content: "Currency Converter — Live Exchange Rates" },
+      { property: "og:description", content: "Real-time conversion across 20+ world currencies including Naira, Dollar, Euro and Pound." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/currency" },
     ],
+    links: [{ rel: "canonical", href: "/currency" }],
   }),
   component: CurrencyPage,
 });

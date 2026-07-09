@@ -4,11 +4,15 @@ import { ToolShell } from "@/components/SiteShell";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Utilikit" },
-      { name: "description", content: "About Utilikit — a free suite of everyday calculators and converters built by Dotun Lambo." },
-      { property: "og:title", content: "About — Utilikit" },
-      { property: "og:description", content: "Learn more about Utilikit and the tools we offer." },
+      { title: "About Utilikit — Free Calculators by Dotun Lambo" },
+      { name: "description", content: "Utilikit is an independent, ad-light toolkit of calculators and converters built by Dotun Lambo to make everyday numbers effortless on any device." },
+      { name: "keywords", content: "about Utilikit, Dotun Lambo developer, free calculator suite, everyday converters, indie web tools" },
+      { property: "og:title", content: "About Utilikit — Built by Dotun Lambo" },
+      { property: "og:description", content: "The story behind Utilikit and the tools it offers." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/about" },
     ],
+    links: [{ rel: "canonical", href: "/about" }],
   }),
   component: AboutPage,
 });
