@@ -10,10 +10,28 @@ import {
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "Frequently Asked Questions — Utilikit" },
-      { name: "description", content: "Answers to common questions about Utilikit calculators, converters, privacy, and more." },
-      { property: "og:title", content: "Frequently Asked Questions — Utilikit" },
-      { property: "og:description", content: "Answers to common questions about Utilikit." },
+      { title: "FAQ — Utilikit Calculators, Currency & Privacy Answered" },
+      { name: "description", content: "Answers to the top questions about Utilikit: how our calculators work, currency rate sources, mobile support, ads, privacy and how to get in touch." },
+      { name: "keywords", content: "Utilikit FAQ, calculator help, currency converter accuracy, calculator privacy, Utilikit support, AdSense questions" },
+      { property: "og:title", content: "Utilikit FAQ — Answers to Common Questions" },
+      { property: "og:description", content: "How Utilikit calculators, currency rates, ads and privacy work." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/faq" },
+    ],
+    links: [{ rel: "canonical", href: "/faq" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQS.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: { "@type": "Answer", text: f.answer },
+          })),
+        }),
+      },
     ],
   }),
   component: FAQPage,
