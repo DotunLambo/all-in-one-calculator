@@ -6,9 +6,15 @@ import { RelatedTools } from "@/components/RelatedTools";
 export const Route = createFileRoute("/bmi")({
   head: () => ({
     meta: [
-      { title: "BMI Calculator — Utilikit" },
-      { name: "description", content: "Calculate your Body Mass Index in metric or imperial units." },
+      { title: "BMI Calculator — Body Mass Index in Metric & Imperial" },
+      { name: "description", content: "Free BMI calculator: enter height and weight in cm/kg or ft/lb to see your Body Mass Index, category and healthy range in one tap." },
+      { name: "keywords", content: "BMI calculator, body mass index, healthy weight, BMI metric, BMI imperial, weight category, BMI chart" },
+      { property: "og:title", content: "BMI Calculator — Metric & Imperial" },
+      { property: "og:description", content: "Instant BMI from height and weight, with category and healthy range." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/bmi" },
     ],
+    links: [{ rel: "canonical", href: "/bmi" }],
   }),
   component: BMIPage,
 });
