@@ -10,11 +10,15 @@ import { Mail, MapPin, Send } from "lucide-react";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Utilikit" },
-      { name: "description", content: "Get in touch with the Utilikit team." },
-      { property: "og:title", content: "Contact — Utilikit" },
-      { property: "og:description", content: "Send feedback, questions or partnership requests to Utilikit." },
+      { title: "Contact Utilikit — Feedback, Support & Partnerships" },
+      { name: "description", content: "Send questions, bug reports, feature requests or partnership enquiries to the Utilikit team — we read every message from readers around the world." },
+      { name: "keywords", content: "contact Utilikit, calculator support, feedback, partnership, Dotun Lambo contact" },
+      { property: "og:title", content: "Contact Utilikit" },
+      { property: "og:description", content: "Reach the Utilikit team with feedback, questions or partnership requests." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/contact" },
     ],
+    links: [{ rel: "canonical", href: "/contact" }],
   }),
   component: ContactPage,
 });
