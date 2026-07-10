@@ -53,6 +53,21 @@ function BMIPage() {
     };
   }, [bmi]);
 
+  const healthyWeight = useMemo(() => {
+    if (!height) return null;
+    const minBMI = 18.5;
+    const maxBMI = 24.9;
+    if (unit === "metric") {
+      const hM = height / 100;
+      const min = minBMI * hM * hM;
+      const max = maxBMI * hM * hM;
+      return { min: Math.round(min * 10) / 10, max: Math.round(max * 10) / 10, unit: "kg" };
+    }
+    const min = (minBMI * height * height) / 703;
+    const max = (maxBMI * height * height) / 703;
+    return { min: Math.round(min * 10) / 10, max: Math.round(max * 10) / 10, unit: "lb" };
+  }, [unit, height]);
+
   return (
     <ToolShell title="BMI Calculator" subtitle="A quick estimate of body mass index from height and weight.">
       <div className="rounded-3xl border bg-card p-6 shadow-[var(--shadow-soft)]" style={{ background: "var(--gradient-card)" }}>
@@ -78,6 +93,14 @@ function BMIPage() {
               style={{ background: `${category.color} / 0.15`, color: category.color }}>
               <span className="h-2 w-2 rounded-full" style={{ background: category.color }} />
               {category.label}
+            </div>
+          )}
+          {healthyWeight && (
+            <div className="mt-4 text-sm text-muted-foreground">
+              Healthy weight range for your height:{" "}
+              <span className="font-medium text-foreground">
+                {healthyWeight.min}–{healthyWeight.max} {healthyWeight.unit}
+              </span>
             </div>
           )}
         </div>
