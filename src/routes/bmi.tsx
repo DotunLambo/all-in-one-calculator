@@ -30,11 +30,28 @@ function BMIPage() {
     return (703 * weight) / Math.pow(height, 2);
   }, [unit, height, weight]);
 
-  const category =
-    bmi < 18.5 ? { label: "Underweight", color: "oklch(0.7 0.15 230)" } :
-    bmi < 25 ? { label: "Normal", color: "oklch(0.65 0.18 150)" } :
-    bmi < 30 ? { label: "Overweight", color: "oklch(0.75 0.18 80)" } :
-    { label: "Obese", color: "oklch(0.6 0.22 25)" };
+  const { category, interpretation } = useMemo(() => {
+    if (!bmi) return { category: null, interpretation: "" };
+    if (bmi < 18.5)
+      return {
+        category: { label: "Underweight", color: "oklch(0.7 0.15 230)" },
+        interpretation: "Your BMI is below the recommended range. You may need to eat more nutrient-dense foods and speak with a health professional about healthy weight gain.",
+      };
+    if (bmi < 25)
+      return {
+        category: { label: "Normal weight", color: "oklch(0.65 0.18 150)" },
+        interpretation: "Your BMI falls within the healthy range. Keep up balanced eating and regular activity to maintain it.",
+      };
+    if (bmi < 30)
+      return {
+        category: { label: "Overweight", color: "oklch(0.75 0.18 80)" },
+        interpretation: "Your BMI is above the healthy range. Small, consistent changes in diet and activity can help move toward a healthier weight.",
+      };
+    return {
+      category: { label: "Obese", color: "oklch(0.6 0.22 25)" },
+      interpretation: "Your BMI indicates obesity, which raises the risk of several health conditions. A clinician or dietitian can help plan a safe, sustainable approach.",
+    };
+  }, [bmi]);
 
   return (
     <ToolShell title="BMI Calculator" subtitle="A quick estimate of body mass index from height and weight.">
@@ -56,13 +73,37 @@ function BMIPage() {
         <div className="mt-8 rounded-2xl border bg-background p-6 text-center">
           <div className="text-sm text-muted-foreground">Your BMI</div>
           <div className="mt-1 text-5xl font-semibold tracking-tight">{bmi ? bmi.toFixed(1) : "—"}</div>
-          {bmi > 0 && (
+          {category && (
             <div className="mt-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium"
               style={{ background: `${category.color} / 0.15`, color: category.color }}>
               <span className="h-2 w-2 rounded-full" style={{ background: category.color }} />
               {category.label}
             </div>
           )}
+        </div>
+
+        <div className="mt-8 rounded-2xl border bg-background p-6">
+          <h3 className="text-lg font-semibold tracking-tight">Result interpretation</h3>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            {interpretation || "Enter your height and weight above to see your BMI category and what it means."}
+          </p>
+
+          <div className="mt-5 space-y-2">
+            {[
+              { label: "Underweight", max: "< 18.5", color: "oklch(0.7 0.15 230)" },
+              { label: "Normal weight", max: "18.5 – 24.9", color: "oklch(0.65 0.18 150)" },
+              { label: "Overweight", max: "25.0 – 29.9", color: "oklch(0.75 0.18 80)" },
+              { label: "Obese", max: "30.0+", color: "oklch(0.6 0.22 25)" },
+            ].map((row) => (
+              <div key={row.label} className="flex items-center justify-between rounded-xl px-3 py-2 text-sm">
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: row.color }} />
+                  <span className="font-medium">{row.label}</span>
+                </div>
+                <span className="text-muted-foreground">{row.max}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
