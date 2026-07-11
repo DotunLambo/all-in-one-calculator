@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -105,12 +107,28 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {GA_MEASUREMENT_ID && <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />}
       </head>
       <body>
         {children}
         <Scripts />
       </body>
     </html>
+  );
+}
+
+function GoogleAnalytics({ measurementId }: { measurementId: string }) {
+  const script = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${measurementId}');
+  `;
+  return (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />
+      <script dangerouslySetInnerHTML={{ __html: script }} />
+    </>
   );
 }
 
