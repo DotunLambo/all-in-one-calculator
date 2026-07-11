@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { ArrowLeft } from "lucide-react";
+import { GlobalSearch, MobileSearchTrigger } from "@/components/GlobalSearch";
 
 export function SiteHeader() {
   return (
@@ -15,18 +16,22 @@ export function SiteHeader() {
           </span>
           <span>Utilikit</span>
         </Link>
-        <nav className="hidden gap-6 text-sm text-muted-foreground sm:flex">
-          <Link to="/calculator" className="hover:text-foreground">Calculator</Link>
-          <Link to="/bmi" className="hover:text-foreground">BMI</Link>
-          <Link to="/currency" className="hover:text-foreground">Currency</Link>
-          <Link to="/calories" className="hover:text-foreground">Calories</Link>
-          <Link to="/loan" className="hover:text-foreground">Loan (NG)</Link>
-          <Link to="/us-loan" className="hover:text-foreground">Loan (US)</Link>
-          <Link to="/units" className="hover:text-foreground">Units</Link>
-          <Link to="/about" className="hover:text-foreground">About</Link>
-          <Link to="/faq" className="hover:text-foreground">FAQ</Link>
-          <Link to="/contact" className="hover:text-foreground">Contact</Link>
-        </nav>
+        <div className="flex items-center gap-4">
+          <GlobalSearch />
+          <MobileSearchTrigger />
+          <nav className="hidden gap-6 text-sm text-muted-foreground lg:flex">
+            <Link to="/calculator" className="hover:text-foreground">Calculator</Link>
+            <Link to="/bmi" className="hover:text-foreground">BMI</Link>
+            <Link to="/currency" className="hover:text-foreground">Currency</Link>
+            <Link to="/calories" className="hover:text-foreground">Calories</Link>
+            <Link to="/loan" className="hover:text-foreground">Loan (NG)</Link>
+            <Link to="/us-loan" className="hover:text-foreground">Loan (US)</Link>
+            <Link to="/units" className="hover:text-foreground">Units</Link>
+            <Link to="/about" className="hover:text-foreground">About</Link>
+            <Link to="/faq" className="hover:text-foreground">FAQ</Link>
+            <Link to="/contact" className="hover:text-foreground">Contact</Link>
+          </nav>
+        </div>
       </div>
     </header>
   );
