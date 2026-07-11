@@ -161,6 +161,17 @@ export function GlobalSearch() {
 
 export function MobileSearchTrigger() {
   const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const results = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    if (!normalized) return [];
+    return tools.filter(
+      (t) =>
+        t.title.toLowerCase().includes(normalized) ||
+        t.desc.toLowerCase().includes(normalized) ||
+        t.keywords.some((k) => k.toLowerCase().includes(normalized))
+    );
+  }, [query]);
 
   return (
     <>
@@ -180,10 +191,9 @@ export function MobileSearchTrigger() {
                 autoFocus
                 type="text"
                 placeholder="Search tools..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
                 className="flex-1 bg-transparent outline-none text-sm"
-                onChange={(e) => {
-                  // Reuse the same logic by keeping it in a separate component is cleaner
-                }}
               />
               <button
                 onClick={() => setOpen(false)}
@@ -193,7 +203,38 @@ export function MobileSearchTrigger() {
                 <X className="h-3 w-3" />
               </button>
             </div>
-            <MobileSearchResults onSelect={() => setOpen(false)} />
+            <div className="max-h-72 overflow-auto p-2">
+              {results.length > 0 ? (
+                results.map((tool) => {
+                  const Icon = tool.icon;
+                  return (
+                    <Link
+                      key={tool.to}
+                      to={tool.to}
+                      onClick={() => {
+                        setOpen(false);
+                        setQuery("");
+                      }}
+                      className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-foreground transition hover:bg-accent"
+                    >
+                      <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-secondary">
+                        <Icon className="h-4 w-4" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="font-medium">{tool.title}</div>
+                        <div className="text-xs text-muted-foreground">{tool.desc}</div>
+                      </div>
+                    </Link>
+                  );
+                })
+              ) : query.trim() ? (
+                <div className="px-4 py-6 text-center text-sm text-muted-foreground">
+                  No tools found for "{query}"
+                </div>
+              ) : (
+                <div className="px-4 py-4 text-xs text-muted-foreground">Start typing to find tools.</div>
+              )}
+            </div>
           </div>
         </div>
       )}
@@ -201,59 +242,3 @@ export function MobileSearchTrigger() {
   );
 }
 
-function MobileSearchResults({ onSelect }: { onSelect: () => void }) {
-  const [query, setQuery] = useState("");
-  const results = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
-    if (!normalized) return [];
-    return tools.filter(
-      (t) =>
-        t.title.toLowerCase().includes(normalized) ||
-        t.desc.toLowerCase().includes(normalized) ||
-        t.keywords.some((k) => k.toLowerCase().includes(normalized))
-    );
-  }, [query]);
-
-  return (
-    <>
-      <input
-        type="text"
-        placeholder="Search tools..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        className="sr-only"
-        aria-hidden="true"
-        tabIndex={-1}
-      />
-      <div className="max-h-72 overflow-auto p-2">
-        {results.length > 0 ? (
-          results.map((tool) => {
-            const Icon = tool.icon;
-            return (
-              <Link
-                key={tool.to}
-                to={tool.to}
-                onClick={onSelect}
-                className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-foreground transition hover:bg-accent"
-              >
-                <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-secondary">
-                  <Icon className="h-4 w-4" />
-                </div>
-                <div className="flex-1">
-                  <div className="font-medium">{tool.title}</div>
-                  <div className="text-xs text-muted-foreground">{tool.desc}</div>
-                </div>
-              </Link>
-            );
-          })
-        ) : query.trim() ? (
-          <div className="px-4 py-6 text-center text-sm text-muted-foreground">
-            No tools found for "{query}"
-          </div>
-        ) : (
-          <div className="px-4 py-4 text-xs text-muted-foreground">Start typing to find tools.</div>
-        )}
-      </div>
-    </>
-  );
-}
