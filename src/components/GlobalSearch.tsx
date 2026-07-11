@@ -192,8 +192,15 @@ export function MobileSearchTrigger() {
         <Search className="h-4 w-4" />
       </button>
       {open && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-background/80 backdrop-blur-sm px-4 pt-24 sm:hidden">
-          <div className="w-full max-w-md overflow-hidden rounded-2xl border bg-card shadow-[var(--shadow-elegant)]" style={{ background: "var(--gradient-card)" }}>
+        <div
+          className="fixed inset-0 z-50 flex items-start justify-center bg-background/80 backdrop-blur-sm px-4 pt-24 sm:hidden"
+          onClick={() => setOpen(false)}
+        >
+          <div
+            className="w-full max-w-md overflow-hidden rounded-2xl border bg-card shadow-[var(--shadow-elegant)]"
+            style={{ background: "var(--gradient-card)" }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-center gap-2 border-b px-4 py-3">
               <Search className="h-4 w-4 text-muted-foreground" />
               <input
