@@ -244,7 +244,7 @@ export function MobileSearchTrigger() {
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <span className="font-medium">{tool.title}</span>
-                          <span className={`rounded-full px-1.5 py-0.5 text-[10px] ${index === activeIndex ? "bg-primary-foreground/20" : "bg-secondary text-muted-foreground"}`}>
+                          <span className="rounded-full bg-secondary px-1.5 py-0.5 text-[10px] text-muted-foreground">
                             {tool.category}
                           </span>
                         </div>
