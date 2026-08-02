@@ -18,13 +18,68 @@ export type ToolCategory =
   | "Unit Converters"
   | "Site Pages";
 
-export const TOOL_CATEGORIES: { name: ToolCategory; desc: string }[] = [
-  { name: "Math & Everyday", desc: "Quick everyday number crunching." },
-  { name: "Health & Fitness", desc: "Track your body metrics and energy needs." },
-  { name: "Money & Finance", desc: "Loans, repayments and live exchange rates." },
-  { name: "Unit Converters", desc: "Switch between metric and imperial in a tap." },
-  { name: "Site Pages", desc: "Learn more about Utilikit." },
+export type CategoryMeta = {
+  name: ToolCategory;
+  slug: string;
+  desc: string;
+  intro: string;
+  metaTitle: string;
+  metaDescription: string;
+};
+
+export const TOOL_CATEGORIES: CategoryMeta[] = [
+  {
+    name: "Math & Everyday",
+    slug: "math-everyday",
+    desc: "Quick everyday number crunching.",
+    intro:
+      "Everyday maths without the clutter. Run quick arithmetic, percentages and repeat calculations right in your browser — nothing to install and nothing to sign up for.",
+    metaTitle: "Math & Everyday Calculators — Utilikit",
+    metaDescription:
+      "Free everyday maths tools: a fast online calculator for arithmetic, percentages and quick sums. No sign-up, works on mobile and desktop.",
+  },
+  {
+    name: "Health & Fitness",
+    slug: "health-fitness",
+    desc: "Track your body metrics and energy needs.",
+    intro:
+      "Understand your body metrics at a glance. Check your BMI against healthy ranges and estimate the daily calories you need to maintain, lose or gain weight.",
+    metaTitle: "Health & Fitness Calculators — BMI & Calories | Utilikit",
+    metaDescription:
+      "Free health calculators: work out your BMI with category ranges and estimate daily calorie needs (TDEE) using the Mifflin-St Jeor equation.",
+  },
+  {
+    name: "Money & Finance",
+    slug: "money-finance",
+    desc: "Loans, repayments and live exchange rates.",
+    intro:
+      "Plan borrowing and spending with confidence. Compare loan repayments in Naira or dollars, see full amortisation schedules, and convert money at live exchange rates.",
+    metaTitle: "Money & Finance Calculators — Loans & Currency | Utilikit",
+    metaDescription:
+      "Free finance tools: Nigeria and US loan calculators with monthly payments and amortisation schedules, plus a live currency converter.",
+  },
+  {
+    name: "Unit Converters",
+    slug: "unit-converters",
+    desc: "Switch between metric and imperial in a tap.",
+    intro:
+      "Metric to imperial and back, instantly. Convert length, weight and temperature — or use the all-in-one converter when you need several units at once.",
+    metaTitle: "Unit Converters — Length, Weight & Temperature | Utilikit",
+    metaDescription:
+      "Free unit converters for length, weight and temperature. Switch between metric and imperial units instantly — meters, feet, kg, lbs, °C and °F.",
+  },
+  {
+    name: "Site Pages",
+    slug: "site-pages",
+    desc: "Learn more about Utilikit.",
+    intro:
+      "Everything about Utilikit in one place — who built it, how the tools work, how your data is handled, and how to get in touch.",
+    metaTitle: "About Utilikit — Site Pages, FAQ & Contact",
+    metaDescription:
+      "Learn about Utilikit, read the FAQ, review the privacy policy, or contact developer Dotun Lambo about the free calculator and converter tools.",
+  },
 ];
+
 
 export type Tool = {
   to: string;
