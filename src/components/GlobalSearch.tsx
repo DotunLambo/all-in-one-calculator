@@ -131,7 +131,12 @@ export function GlobalSearch() {
                         <Icon className="h-4 w-4" />
                       </div>
                       <div className="flex-1">
-                        <div className="font-medium">{tool.title}</div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium">{tool.title}</span>
+                          <span className={`rounded-full px-1.5 py-0.5 text-[10px] ${index === activeIndex ? "bg-primary-foreground/20" : "bg-secondary text-muted-foreground"}`}>
+                            {tool.category}
+                          </span>
+                        </div>
                         <div className={`text-xs ${index === activeIndex ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
                           {tool.desc}
                         </div>
@@ -237,7 +242,12 @@ export function MobileSearchTrigger() {
                         <Icon className="h-4 w-4" />
                       </div>
                       <div className="flex-1">
-                        <div className="font-medium">{tool.title}</div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium">{tool.title}</span>
+                          <span className={`rounded-full px-1.5 py-0.5 text-[10px] ${index === activeIndex ? "bg-primary-foreground/20" : "bg-secondary text-muted-foreground"}`}>
+                            {tool.category}
+                          </span>
+                        </div>
                         <div className="text-xs text-muted-foreground">{tool.desc}</div>
                       </div>
                     </Link>
