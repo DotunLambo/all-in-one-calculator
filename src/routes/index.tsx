@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/SiteShell";
-import { ToolGrid } from "@/components/ToolGrid";
+import { ToolGrid, CategoryCards } from "@/components/ToolGrid";
 
 export const Route = createFileRoute("/")({
   head: () => ({
