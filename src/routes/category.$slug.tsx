@@ -66,7 +66,15 @@ function CategoryPage() {
         <p className="mt-3 max-w-2xl text-muted-foreground">{category.intro}</p>
 
         <div className="mt-10">
-          <ToolCards items={items} />
+          {items.length > 0 ? (
+            <ToolCards items={items} />
+          ) : (
+            <div className="rounded-2xl border bg-card p-8 text-center text-muted-foreground">
+              <p className="text-sm">
+                Tools for {category.name} are on the way. Explore the categories below in the meantime.
+              </p>
+            </div>
+          )}
         </div>
 
         <section className="mt-14 border-t pt-8">
