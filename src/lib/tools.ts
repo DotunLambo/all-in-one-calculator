@@ -16,7 +16,24 @@ export type ToolCategory =
   | "Health & Fitness"
   | "Money & Finance"
   | "Unit Converters"
-  | "Site Pages";
+  | "Site Pages"
+  | "Percentage & Fractions"
+  | "Date & Time"
+  | "Science & Engineering"
+  | "Business & Accounting"
+  | "Travel & Geography"
+  | "Cooking & Baking"
+  | "Construction & DIY"
+  | "Education & Study"
+  | "Tax & VAT"
+  | "Savings & Investment"
+  | "Retirement & Pension"
+  | "Auto & Fuel"
+  | "Home & Mortgage"
+  | "Salary & Paycheck"
+  | "Data & Digital Storage"
+  | "Sports & Fitness Tracking"
+  | "Shopping & Discounts";
 
 export type CategoryMeta = {
   name: ToolCategory;
