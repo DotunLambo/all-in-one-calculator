@@ -34,6 +34,40 @@ export function ToolCards({ items }: { items: Tool[] }) {
   );
 }
 
+export function CategoryCards() {
+  return (
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {TOOL_CATEGORIES.map((category) => {
+        const count = tools.filter((t) => t.category === category.name).length;
+        return (
+          <Link
+            key={category.slug}
+            to="/category/$slug"
+            params={{ slug: category.slug }}
+            className="group relative flex flex-col rounded-2xl border bg-card p-5 shadow-[var(--shadow-soft)] transition-all hover:shadow-[var(--shadow-elegant)] hover:-translate-y-0.5"
+            style={{ background: "var(--gradient-card)" }}
+          >
+            <h3 className="text-base font-semibold text-foreground">
+              {category.name}
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
+              {category.desc}
+            </p>
+            <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary">
+              {count > 0 ? `${count} tool${count > 1 ? "s" : ""}` : "Coming soon"}
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+            </span>
+            <span
+              className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 transition-transform group-hover:scale-x-100"
+              style={{ background: "var(--gradient-hero)" }}
+            />
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
 export function ToolGrid() {
   return (
     <div className="space-y-12">

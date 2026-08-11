@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader, SiteFooter } from "@/components/SiteShell";
-import { ToolGrid } from "@/components/ToolGrid";
+import { ToolGrid, CategoryCards } from "@/components/ToolGrid";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -46,7 +46,13 @@ function Index() {
         </div>
       </section>
       <section className="mx-auto max-w-5xl px-6 pb-24">
-        <ToolGrid />
+        <h2 className="mb-5 text-xl font-semibold tracking-tight text-foreground">
+          Browse all categories
+        </h2>
+        <CategoryCards />
+        <div className="mt-16">
+          <ToolGrid />
+        </div>
       </section>
       <SiteFooter />
     </div>
