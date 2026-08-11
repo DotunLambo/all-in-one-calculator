@@ -44,12 +44,11 @@ function CategoryPage() {
     <div className="min-h-screen">
       <SiteHeader />
       <main className="mx-auto max-w-5xl px-6 py-12">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" /> All tools
-        </Link>
+        <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
+          <Link to="/" className="hover:text-foreground">Home</Link>
+          <span aria-hidden className="text-muted-foreground/60">/</span>
+          <span className="text-foreground">{category.name}</span>
+        </nav>
         <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
           {category.name}
         </h1>
