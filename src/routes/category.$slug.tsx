@@ -20,6 +20,14 @@ export const Route = createFileRoute("/category/$slug")({
       };
     }
     const { category } = loaderData;
+    const breadcrumbLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "/" },
+        { "@type": "ListItem", position: 2, name: category.name, item: `/category/${category.slug}` },
+      ],
+    };
     return {
       meta: [
         { title: category.metaTitle },
@@ -30,6 +38,9 @@ export const Route = createFileRoute("/category/$slug")({
         { property: "og:url", content: `/category/${category.slug}` },
       ],
       links: [{ rel: "canonical", href: `/category/${category.slug}` }],
+      scripts: [
+        { type: "application/ld+json", children: JSON.stringify(breadcrumbLd) },
+      ],
     };
   },
   component: CategoryPage,
