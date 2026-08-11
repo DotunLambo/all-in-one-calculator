@@ -391,3 +391,36 @@ export const tools: Tool[] = [
     keywords: ["privacy", "policy", "data"],
   },
 ];
+
+/* Generated spec-driven tools (5+ per category) */
+import { TOOL_SPECS } from "./tool-specs";
+
+const CATEGORY_ICON: Partial<Record<ToolCategory, LucideIcon>> = {
+  "Health & Fitness": HeartPulse,
+  "Money & Finance": Banknote,
+  "Unit Converters": Ruler,
+  "Savings & Investment": Banknote,
+  "Retirement & Pension": Landmark,
+  "Tax & VAT": Landmark,
+  "Home & Mortgage": Landmark,
+  "Salary & Paycheck": DollarSign,
+  "Shopping & Discounts": DollarSign,
+  "Auto & Fuel": Flame,
+  "Sports & Fitness Tracking": Flame,
+  "Cooking & Baking": Thermometer,
+  "Science & Engineering": Thermometer,
+  "Construction & DIY": Ruler,
+  "Travel & Geography": Ruler,
+  "Data & Digital Storage": Weight,
+};
+
+tools.push(
+  ...TOOL_SPECS.map((spec) => ({
+    to: `/tool/${spec.slug}`,
+    category: spec.category,
+    title: spec.title,
+    desc: spec.desc,
+    icon: CATEGORY_ICON[spec.category] ?? Calculator,
+    keywords: spec.keywords,
+  })),
+);
